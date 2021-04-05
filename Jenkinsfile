@@ -1,18 +1,12 @@
 pipeline {
-  agent {
-    label 'ecs'
-  }
-    
-  stages {
-    stage('Hello') {
-      steps {
-        echo 'Hello World!'
-      }
+    agent {
+        docker { image 'node:14-alpine' }
     }
-    stage('Goodbye') {
-      steps {
-        echo 'Goodbye Universe!'
-      }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
-  }
 }
