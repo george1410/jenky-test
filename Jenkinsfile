@@ -1,9 +1,6 @@
 pipeline {
     agent {
-        docker { 
-            image 'node:14-alpine'
-            label 'ecs'
-        }
+        label 'ecs'
     }
     stages {
         stage('Test') {
