@@ -7,8 +7,14 @@ stage('Checkout code') {
     }
 }
 
+stage('Say Hi') {
+    ecsNode {
+        helloGeorge()
+    }
+}
+
 stage('Check node version') {
-    node('ecs') {
+    ecsNode {
         sh "ls"
         sh "node -v"
         sh "npm -v"
@@ -16,21 +22,21 @@ stage('Check node version') {
 }
 
 stage('Write and stash a file') {
-    node('ecs') {
+    ecsNode {
         sh 'echo "hello world!" > hello.txt'
         stash 'sources'
     }
 }
 
 stage('Read from stashed file') {
-    node('ecs') {
+    ecsNode {
         unstash 'sources'
         sh 'cat hello.txt'
     }
 }
 
 stage('Check AWS credentials') {
-    node('ecs') {
+    ecsNode {
         sh 'aws sts get-caller-identity'
     }
 }
