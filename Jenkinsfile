@@ -13,6 +13,10 @@ stage('Say Hi') {
     }
 }
 
+stage('Say Hi Again') {
+    helloGeorge()
+}
+
 stage('Check node version') {
     ecsNode {
         sh "ls"
