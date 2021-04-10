@@ -3,11 +3,13 @@
 stage('Checkout code') {
     node('ecs') {
         checkout scm
+        sh "ls"
     }
 }
 
 stage('Check node version') {
     node('ecs') {
+        sh "ls"
         sh "node -v"
         sh "npm -v"
     }
