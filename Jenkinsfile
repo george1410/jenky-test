@@ -27,8 +27,16 @@
 //    }
 //}
 
-node('ecs') {
-    stage('Checkout code') {
+
+stage('Checkout code') {
+    node('ecs') {
         checkout scm
+    }
+}
+
+stage('Check node version') {
+    node('ecs') {
+        sh "node -v"
+        sh "npm -v"
     }
 }
