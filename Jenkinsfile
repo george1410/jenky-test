@@ -1,14 +1,14 @@
 #!groovy
 
 stage('Checkout code') {
-    node('ecs') {
+    node() {
         checkout scm
         sh "ls"
     }
 }
 
 stage('Say Hi') {
-    ecsNode {
+    node() {
         helloGeorge()
     }
 }
@@ -18,7 +18,7 @@ stage('Say Hi Again') {
 }
 
 stage('Check node version') {
-    ecsNode {
+    node() {
         sh "ls"
         sh "node -v"
         sh "npm -v"
@@ -26,21 +26,21 @@ stage('Check node version') {
 }
 
 stage('Write and stash a file') {
-    ecsNode {
+    node() {
         sh 'echo "hello world!" > hello.txt'
         stash 'sources'
     }
 }
 
 stage('Read from stashed file') {
-    ecsNode {
+    node() {
         unstash 'sources'
         sh 'cat hello.txt'
     }
 }
 
 stage('Check AWS credentials') {
-    ecsNode {
+    node() {
         sh 'aws sts get-caller-identity'
     }
 }
