@@ -7,16 +7,6 @@ stage('Checkout code') {
     }
 }
 
-stage('Say Hi') {
-    node() {
-        helloGeorge()
-    }
-}
-
-stage('Say Hi Again') {
-    helloGeorge()
-}
-
 stage('Check node version') {
     node() {
         sh "ls"
