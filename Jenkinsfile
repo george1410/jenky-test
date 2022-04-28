@@ -7,21 +7,9 @@ stage('Checkout code') {
     }
 }
 
-stage('Say Hi') {
+stage('Say hello') {
     node() {
-        helloGeorge()
-    }
-}
-
-stage('Say Hi Again') {
-    helloGeorge()
-}
-
-stage('Check node version') {
-    node() {
-        sh "ls"
-        sh "node -v"
-        sh "npm -v"
+        echo 'Hello world!'
     }
 }
 
@@ -36,11 +24,5 @@ stage('Read from stashed file') {
     node() {
         unstash 'sources'
         sh 'cat hello.txt'
-    }
-}
-
-stage('Check AWS credentials') {
-    node() {
-        sh 'aws sts get-caller-identity'
     }
 }
